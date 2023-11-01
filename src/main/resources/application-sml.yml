@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    username: dbamv
+    password: dbamv
+    url: jdbc:oracle:thin:@//179.131.8.25:1521/sml
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    ##show-sql: true
+    hibernate:
+      ddl-auto: none
+      default_schema: mvintegra
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+      physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        ##format_sql: true
+        cache:
+          use_second_level_cache: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+authentication:
+  jwt:
+    secret: ${JWT_SECRET:bGmyakuB4SpQ83BpTX41}
+  token_expiration:
+    token_expiration: ${JWT_HOUR:168}
+  cookies:
+    token: session_token
+

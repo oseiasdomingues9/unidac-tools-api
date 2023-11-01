@@ -1,9 +1,9 @@
 package com.unidac.tools.utils;
 
+import com.unidac.tools.dto.FilterDTO;
 import lombok.experimental.UtilityClass;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 @UtilityClass
@@ -17,4 +17,18 @@ public class DateUtils {
                 .withZoneSameInstant(ZoneId.of("America/Sao_Paulo"))
                 .toLocalDateTime();
     }
+
+    public LocalDate convertLocalDateTimeToLocalDate(LocalDateTime localDateTime) {
+       return localDateTime.toLocalDate();
+    }
+
+    public LocalDate toLocalDate(String date){
+        return convertLocalDateTimeToLocalDate(toLocalDateTime(date));
+    }
+
+
+    public Instant hourToInstant(int hour){
+        return LocalDateTime.now().plusHours(hour).toInstant(ZoneOffset.ofHours(-3));
+    }
+
 }

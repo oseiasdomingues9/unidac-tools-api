@@ -17,8 +17,8 @@ public class ConfigServices {
     private final ConfigLogsRepository configLogsRepository;
 
 
-    public ConfigLogs findByUserConfig(String username) {
-        ConfigLogs configLogs = configLogsRepository.findByUsername(username);
+    public ConfigLogs findByUserConfig(String userId) {
+        ConfigLogs configLogs = configLogsRepository.findByUserId(userId);
         if(configLogs == null){
             ConfigLogs config = new ConfigLogs();
             config.setIntegrationId(true);
@@ -31,16 +31,17 @@ public class ConfigServices {
             config.setRequestMethod(true);
             config.setContentType(true);
             config.setDebugMode (true);
-            config.setUsername(username);
+            config.setUserId(userId);
             configLogsRepository.save(config);
             return config;
         }else {
+            System.out.println(userId);
             return configLogs;
         }
 
     }
     public void save(ConfigLogs configLogs) {
-        ConfigLogs configLogs1 = configLogsRepository.findByUsername(configLogs.getUsername());
+        ConfigLogs configLogs1 = configLogsRepository.findByUserId(configLogs.getUserId());
         if (configLogs1 != null){
             configLogs1.setIntegrationId(configLogs.isIntegrationId());
             configLogs1.setRefId1(configLogs.isRefId1());

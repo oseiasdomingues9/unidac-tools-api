@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 public class ConfigLogs{
 
     @Id
-    @SequenceGenerator(name = "configLogsSequence",sequenceName = "config_log_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "configLogsSequence")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private boolean integrationId;
     private boolean refId1;
     private boolean refName1;
@@ -27,5 +26,5 @@ public class ConfigLogs{
     private boolean contentType;
     private boolean debugMode;
 
-    private String username;
+    private String userId;
 }
