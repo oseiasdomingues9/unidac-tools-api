@@ -12,5 +12,5 @@ import java.util.List;
 public class LogsPageDTO {
 
     private List<LogsDTO> logsDTO;
-    private Integer totalRows;
+    private Long totalRows;
 }
